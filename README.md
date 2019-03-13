@@ -3,7 +3,7 @@ Swecha Techdays Repository: This repository holds the content for Swecha Python 
 
 # Setup
 
-git clone "https://github.com/rojaraniiza/swecha-techdays-python-workshop.git"
+git clone "https://github.com/rojaraniiza/swecha-techdays-python-workshop.git"  
 cd swecha-techdays-python-workshop/
 
 # Run Notebook
