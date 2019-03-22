@@ -1,4 +1,4 @@
-#Usage: scrapy runspider 2_shopclues_product_details_scraper.py
+#Usage: scrapy runspider 2_shopclues_product_details_scraper.py -o product_details.csv
 import scrapy
 import csv
 class ProductDetailsExtracter(scrapy.Spider):
@@ -9,11 +9,9 @@ class ProductDetailsExtracter(scrapy.Spider):
   "https://www.shopclues.com/toyouth-solid-mens-hooded-black-t-shirt-pack-of-1-142856726.html?ref=vv_3"]
 
   def parse(self, response):
-    product_title = response.xpath('//h1/text()').extract_first().strip()
-    price = response.xpath('//div[@class="price"]/span[@class="f_price"]/@data-attr').extract_first()
-    shipping_charges = response.xpath('//span[@id="shipcharge"]/text()').extract_first()
-    image = response.xpath('//img[@id="zoom_picture_gall"]/@src').extract_first()
-    print("product_title", product_title)
-    print("price", price)
-    print("shipping charges", shipping_charges)
-    print("image", image)
+    yield{
+    "product_title" : response.xpath('//h1/text()').extract_first().strip(),
+    "price" : response.xpath('//div[@class="price"]/span[@class="f_price"]/@data-attr').extract_first(),
+    "shipping_charges" : response.xpath('//span[@id="shipcharge"]/text()').extract_first(),
+    "image" : response.xpath('//img[@id="zoom_picture_gall"]/@src').extract_first()
+    }
